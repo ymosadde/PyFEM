@@ -1,7 +1,10 @@
 
 Meshpath = "Mesh/sphere_test.msh"
-mshFile = open(Meshpath, 'r')
-mshFileName = mshFile.name
+with open(Meshpath, 'r') as mshFile:
+    mshFileName = mshFile.name
+
 print('[LOG]    Reading Mesh File: ' + mshFileName)
 
 print(mshFile.__sizeof__())
+
+#mshFile.close() #prevents leaking over maximum allowed file descriptor needed only when read explicitly
