@@ -22,17 +22,15 @@ with open(Meshpath, 'r') as mshFile:
     Node_Z = []
     for n in range(Nnodes):
         split = NodesLines[n].split(" ")
-        split[-1] = split[-1].strip()
+        split[-1] = split[-1].strip() # removes the \n in the last element, Node_Z
         Node_X.append(split[1])
         Node_Y.append(split[2])
         Node_Z.append(split[3])
+    #print ('Size of Nx = ' + str(len(Node_X)))
+    #print ('Size of Ny = ' + str(len(Node_Y)))
+    #print ('Size of Nz = ' + str(len(Node_Z)))
 
-
-    print ('Size of Nx = ' + str(len(Node_X)))
-    print ('Size of Ny = ' + str(len(Node_Y)))
-    print ('Size of Nz = ' + str(len(Node_Z)))
-
-    print (Node_Z)
+    print(Node_Z)
 
 
 
