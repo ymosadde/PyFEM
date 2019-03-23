@@ -30,7 +30,7 @@ with open(Meshpath, 'r') as mshFile:
     #print ('Size of Ny = ' + str(len(Node_Y)))
     #print ('Size of Nz = ' + str(len(Node_Z)))
 
-    print(Node_Z)
+    #print(Node_Z)
 
 
 
