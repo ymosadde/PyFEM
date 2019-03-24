@@ -7,9 +7,12 @@ class Gmsh:
         self.Name = []
         self.Version = []
         self.Nnodes = []
+
         self.Nodes_X = []
         self.Nodes_Y = []
         self.Nodes_Z = []
+        self.nodes_pos = []
+
         self.Nelms = []
         self.Ntets = []
         self.Tets2Nodes = []
@@ -110,6 +113,15 @@ class Gmsh:
         self.Nelms = Nelms
         self.Ntets = Ntets
         self.Tets2Nodes = tets2nodes
+
+        node_pos = []
+        for n in range(Nnodes):
+            nx = self.Nodes_X[n]
+            ny = self.Nodes_Y[n]
+            nz = self.Nodes_Z[n]
+            node_pos.append([nx,ny,nz])
+            self.nodes_pos = node_pos
+
 
     def log (self):
         print('\t'+'File: ' + str(self.Name) + '\t' + 'Gmsh Version: ' + str(self.Version))
