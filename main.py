@@ -1,12 +1,8 @@
 import Gmsh
 
-file = "Mesh/sphere_test.msh"
+file = "Mesh/sphere_test2.msh"
 gmsh = Gmsh.Gmsh(file)
 gmsh.get_gmesh_info()
+gmsh.log()
 
-print(gmsh.Name)
-print(gmsh.Version)
-print(gmsh.Nnodes)
-print(gmsh.Nelms)
-print(gmsh.Ntets)
-#print(gmsh.Tets2Nodes[10])
+

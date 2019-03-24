@@ -15,7 +15,7 @@ class Gmsh:
         self.Tets2Nodes = []
 
     def get_gmesh_info(self):
-        print('[MAIN] Getting Gmesh File')
+        print('Getting Gmsh:')
         # path = gmsh.path
         with open(self.path, 'r') as msh_file:
 
@@ -110,3 +110,10 @@ class Gmsh:
         self.Nelms = Nelms
         self.Ntets = Ntets
         self.Tets2Nodes = tets2nodes
+
+    def log (self):
+        print('\t'+'File: ' + str(self.Name) + '\t' + 'Gmsh Version: ' + str(self.Version))
+        print('\t''Total Elements ' + str(self.Nelms))
+        print('\t''Nodes: ' + str(self.Nnodes) + '\t' + 'Tets: ' + str(self.Ntets))
+        print('\t''-----------------------')
+
