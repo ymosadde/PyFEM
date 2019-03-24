@@ -1,10 +1,6 @@
 import get_mesh_info
 
 gmsh_file = "Mesh/sphere_test.msh"
-
-
-
-
 gmsh = get_mesh_info.Gmsh(gmsh_file)
 get_mesh_info.get_mesh_info(gmsh)
 
