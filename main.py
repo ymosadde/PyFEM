@@ -1,8 +1,8 @@
-import get_mesh_info
+import Gmsh
 
-gmsh_file = "Mesh/sphere_test.msh"
-gmsh = get_mesh_info.Gmsh(gmsh_file)
-get_mesh_info.get_mesh_info(gmsh)
+file = "Mesh/sphere_test.msh"
+gmsh = Gmsh.Gmsh(file)
+gmsh.get_gmesh_info()
 
 print(gmsh.Name)
 print(gmsh.Version)
