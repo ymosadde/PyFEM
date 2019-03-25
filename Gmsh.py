@@ -119,13 +119,15 @@ class Gmsh:
             nx = self.Nodes_X[n]
             ny = self.Nodes_Y[n]
             nz = self.Nodes_Z[n]
-            node_pos.append([nx,ny,nz])
+            node_pos.append([nx, ny, nz])
             self.nodes_pos = node_pos
 
-
-    def log (self):
-        print('\t'+'File: ' + str(self.Name) + '\t' + 'Gmsh Version: ' + str(self.Version))
+    def log(self):
+        print('\t' + 'File: ' + str(self.Name) + '\t' + 'Gmsh Version: ' + str(self.Version))
         print('\t''Total Elements ' + str(self.Nelms))
         print('\t''Nodes: ' + str(self.Nnodes) + '\t' + 'Tets: ' + str(self.Ntets))
         print('\t''-----------------------')
 
+
+def happy():
+    print('Im happy cuz im out of class Gmsh')
