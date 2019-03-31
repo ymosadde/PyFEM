@@ -8,6 +8,7 @@ class Mesh:
 
         self.tet_pos = []
         self.tet_vol = []
+        self.total_vol = []
 
     def update(self):
         nodes_pos = self.nodes_pos
@@ -16,7 +17,8 @@ class Mesh:
         Nnodes = len(nodes_pos)
 
         tet_pos = []
-        volume = []
+        tet_vol = []
+        total_vol = 0
 
         for t in range(Ntets):
             n1 = int(tets2nodes[t][0])
@@ -24,7 +26,7 @@ class Mesh:
             n3 = int(tets2nodes[t][2])
             n4 = int(tets2nodes[t][3])
 
-            # MAKE ARRAY OUT OF LISTS
+            # MAKE ARRAY OUT OF NODES POSITION LIST
             n1_arr = np.asarray(nodes_pos[n1 - 1])
             n2_arr = np.asarray(nodes_pos[n2 - 1])
             n3_arr = np.asarray(nodes_pos[n3 - 1])
@@ -44,10 +46,12 @@ class Mesh:
 
             AB_crossv_AC = np.cross(vec12, vec13)
             AD_dot_AB_crossv_AC = np.dot(vec14, AB_crossv_AC)
-            volume.append(AD_dot_AB_crossv_AC / 6)
+            tet_vol.append(AD_dot_AB_crossv_AC / 6)
+            total_vol += tet_vol[t]
 
         self.tet_pos = tet_pos
-        self.tet_vol = volume
+        self.tet_vol = tet_vol
+        self.total_vol = total_vol
 
 
 
