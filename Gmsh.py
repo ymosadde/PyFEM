@@ -7,15 +7,11 @@ class Gmsh:
         self.Name = []
         self.Version = []
         self.Nnodes = []
-
-        self.Nodes_X = []
-        self.Nodes_Y = []
-        self.Nodes_Z = []
-        self.nodes_pos = []
-
         self.Nelms = []
         self.Ntets = []
-        self.Tets2Nodes = []
+
+        self.nodes_pos = []
+        self.tets2nodes = []
 
     def get_gmesh_info(self):
         print('Getting Gmsh:')
@@ -30,6 +26,11 @@ class Gmsh:
             msh_file.readline()
             version = msh_file.readline()
             # print('[LOG Mesh] Format: ' + version)
+
+            # GET RID OF \n
+            version_pieces = version.split(" ")
+            version_pieces[-1] = version_pieces[-1].strip()
+            version = ' '.join(map(str, version_pieces))
 
             # READ NUMBER OF NODES
             msh_file.readline()
@@ -56,6 +57,12 @@ class Gmsh:
             # print ('Size of Ny = ' + str(len(Node_Y)))
             # print ('Size of Nz = ' + str(len(Node_Z)))
             # print(Node_Z)
+            node_pos = []
+            for n in range(Nnodes):
+                nx = Node_X[n]
+                ny = Node_Y[n]
+                nz = Node_Z[n]
+                node_pos.append([nx, ny, nz])
 
             # READ NUMBER OF TOTAL ELEMENTS
             msh_file.readline()
@@ -107,20 +114,11 @@ class Gmsh:
         self.Name = name
         self.Version = version
         self.Nnodes = Nnodes
-        self.Nodes_X = Node_X
-        self.Nodes_Y = Node_Y
-        self.Nodes_Z = Node_Z
         self.Nelms = Nelms
         self.Ntets = Ntets
-        self.Tets2Nodes = tets2nodes
 
-        node_pos = []
-        for n in range(Nnodes):
-            nx = self.Nodes_X[n]
-            ny = self.Nodes_Y[n]
-            nz = self.Nodes_Z[n]
-            node_pos.append([nx, ny, nz])
-            self.nodes_pos = node_pos
+        self.nodes_pos = node_pos
+        self.tets2nodes = tets2nodes
 
     def log(self):
         print('\t' + 'File: ' + str(self.Name) + '\t' + 'Gmsh Version: ' + str(self.Version))

@@ -1,3 +1,5 @@
+from typing import List, Any, Union
+
 import numpy as np
 
 
@@ -15,11 +17,13 @@ class Tet:
         self.node_pos = gmsh.nodes_pos
 
         self.Volume = []
+        #self.COM = []
 
-    def getCOM(self):
+    def get_tet_pos(self):
         node_pos = self.node_pos
         tets2nodes = self.tets2nodes
         Ntets = len(tets2nodes)
+
 
         com_x = []
         com_y = []
@@ -37,7 +41,12 @@ class Tet:
             com_y.append(ny_avg)
             com_z.append(nz_avg)
 
-    def getVolume(self):
+        tet_pos = com_x, com_y, com_z
+        return tet_pos
+
+        #self.tet_pos = tet_pos
+
+    def get_tet_vol(self):
         node_pos = self.node_pos
         tets2nodes = self.tets2nodes
         Ntets = len(tets2nodes)
